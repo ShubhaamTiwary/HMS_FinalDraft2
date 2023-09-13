@@ -48,7 +48,7 @@ const DashboardPage = () => {
 
     const fetchAllHostel = async () => {
         try {
-            const response = await fetch("http://localhost:7000/gethostel_id/where/status_active", {
+            const response = await fetch("https://hms-finaldraft2.onrender.com/gethostel_id/where/status_active", {
                 method: "GET",
                 headers: { "Content-Type": "application/json" },
             });
@@ -86,7 +86,7 @@ const DashboardPage = () => {
                 </div>
                 <div className="bg-white rounded-lg  w-1/3 h-1/2 flex flex-col">
                     <div className='w-full flex flex-row h-1/2 flex-wrap'>
-                        {hostelID.map((ele, i) => {
+                        {hostelID?.map((ele, i) => {
                             if(i%2==0){ 
                                 color=lastColor;
                                 lastColor=!lastColor;

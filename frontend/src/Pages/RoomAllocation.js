@@ -19,7 +19,7 @@ const RoomAllocation = () => {
 
     const getStudentsRoomMap = async () => {
         try {
-            const response = await fetch(`http://localhost:7000/get_allocated_students_for_room_allocation?hostel_id=${state.ans}`, {
+            const response = await fetch(`https://hms-finaldraft2.onrender.com/get_allocated_students_for_room_allocation?hostel_id=${state.ans}`, {
                 method: "GET",
                 headers: { "Content-Type": "application/json" },
             });
@@ -36,7 +36,7 @@ const RoomAllocation = () => {
 
     const getStudents = async () => {
         try {
-            const response = await fetch(`http://localhost:7000/get_students_for_room_allocation?hostel_id=${state.ans}`, {
+            const response = await fetch(`https://hms-finaldraft2.onrender.com/get_students_for_room_allocation?hostel_id=${state.ans}`, {
                 method: "GET",
                 headers: { "Content-Type": "application/json" },
             });
@@ -53,7 +53,7 @@ const RoomAllocation = () => {
 
     const getRooms = async () => {
         try {
-            const response = await fetch(`http://localhost:7000/get_room_details_for_room_allocation?hostel_id=${state.ans}`, {
+            const response = await fetch(`https://hms-finaldraft2.onrender.com/get_room_details_for_room_allocation?hostel_id=${state.ans}`, {
                 method: "GET",
                 headers: { "Content-Type": "application/json" },
             });
@@ -319,7 +319,7 @@ const RoomAllocation = () => {
                                                         <td className='w-1/5 text-center font-semibold'>{item[3] == 'male' ? 'M' : 'F'}</td>
                                                         <td className='w-1/5 text-cente'><button className='h-8 w-full bg-zinc-300 border rounded-md' onClick={(e) => {
                                                             e.preventDefault();
-                                                            setCurrentStudent(item[0].toString());
+                                                            setCurrentStudent(item[0]?.toString());
                                                             togglePopup(true);
                                                         }}>Select the Room</button></td>
                                                         <td className='w-1/5 text-center'>
@@ -328,7 +328,7 @@ const RoomAllocation = () => {
                                                             readonly
                                                             type="text"
                                                             disabled={true}
-                                                            value={allStudentRoomMap[item[0].toString()]?.room_no}
+                                                            value={allStudentRoomMap ? allStudentRoomMap[item[0].toString()]?.room_no :null}
                                                         />
                                                         <button className='text-red-500 font-semibold mb-1' onClick={(e)=>{e.preventDefault()}}>x</button>
                                                         {/* {console.log(allStudentRoomMap[item[0].toString()])} */}
